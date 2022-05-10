@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ headingText }}</h1>
     <div class="chat">
       <div class="conversation-area">
         <ul class="messages">
@@ -29,7 +29,7 @@
     name: 'Chat',
     data() {
       return {
-        msg: 'Your conversation has started',
+        headingText: 'Your conversation has started',
         messageText: '',
         messages: []
       };
