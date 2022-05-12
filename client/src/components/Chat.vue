@@ -6,8 +6,8 @@
         <ul class="messages">
           <li class="message" :class="{ self: message.self }" v-for="message in messages" :key="message.ID">
             <span class="author">
-              <img v-if="message.Icon" :src="message.Icon"/>
-              {{ message.Name  }}
+              <img v-if="message.AuthorIcon" :src="message.AuthorIcon"/>
+              {{ message.AuthorName  }}
             </span>
             <span class="message-text">{{ message.Message }}</span>
             <span class="timestamp">{{ formatDate(message.DateAdded) }}</span>

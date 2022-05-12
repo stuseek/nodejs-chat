@@ -19,8 +19,9 @@ function respond(req, res, next) {
           Messages.DateAdded,
           Messages.Message,
           Messages.AuthorId,
-          Authors.Name,
-          Authors.Icon from Messages
+          Authors.Name as AuthorName,
+          Authors.Icon as AuthorIcon 
+          from Messages
           LEFT JOIN Authors ON Messages.AuthorId = Authors.Id
           WHERE Messages.ConversationId = ${connection.escape(req.params.conversationId)}`, function (error, results) {
       if (error) {
