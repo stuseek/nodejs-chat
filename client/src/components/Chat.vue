@@ -6,11 +6,11 @@
         <ul class="messages">
           <li class="message" :class="{ self: message.self }" v-for="message in messages" :key="message.ID">
             <span class="author">
-              <img v-if="message.author_icon" :src="message.author_icon"/>
-              {{ message.author_name }}
+              <img v-if="message.Icon" :src="message.Icon"/>
+              {{ message.Name  }}
             </span>
-            <span class="message-text">{{ message.message }}</span>
-            <span class="timestamp">{{ formatDate(message.created_timestamp) }}</span>
+            <span class="message-text">{{ message.Message }}</span>
+            <span class="timestamp">{{ formatDate(message.DateAdded) }}</span>
           </li>
         </ul>
       </div>
@@ -36,7 +36,7 @@
     },
     methods: {
       async getMessages() {
-        const response = await axios('http://localhost:8080/messages');
+        const response = await axios('http://localhost:8080/messages/101');
         response.data.map((item) => {
           this.messages.push(item);
         })
@@ -44,11 +44,11 @@
       sendMessage() {
         if (!this.messageText) return;
         this.messages.push({
-          message: this.messageText,
-          ID: Math.random(),
-          author_name: 'You',
-          created_timestamp: Date.now(),
-          self: true,
+          Message: this.messageText,
+          Id: Math.random(),
+          AuthorName: 'You',
+          DateAdded: Date.now(),
+          self: true
         });
         this.messageText = '';
       },
